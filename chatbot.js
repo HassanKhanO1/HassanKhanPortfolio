@@ -312,22 +312,35 @@ He implements Room in several of his projects for data storage!`
       return this.getNonRelevantResponse();
     }
 
-    // Check for exact or partial matches in predefined responses (longest match first for better accuracy)
+    // PRIORITY 1: Check for SPECIFIC contact questions first (longest and most specific)
+    if (lowerMessage.includes('linkedin') && !lowerMessage.includes('github') && !lowerMessage.includes('email')) {
+      return this.predefinedResponses['linkedin'];
+    }
+    if (lowerMessage.includes('github') && !lowerMessage.includes('linkedin') && !lowerMessage.includes('email')) {
+      return this.predefinedResponses['github'];
+    }
+    if (lowerMessage.includes('email') && !lowerMessage.includes('linkedin') && !lowerMessage.includes('github')) {
+      return this.predefinedResponses['email'];
+    }
+
+    // PRIORITY 2: Check for multi-contact questions (contact, reach, connect, social media)
+    if (lowerMessage.includes('contact') || lowerMessage.includes('reach') || 
+        lowerMessage.includes('connect') || lowerMessage.includes('social media') ||
+        lowerMessage.includes('phone') || (lowerMessage.includes('how') && lowerMessage.includes('contact'))) {
+      return this.predefinedResponses['contact'];
+    }
+
+    // PRIORITY 3: Check for exact or partial matches in predefined responses (longest match first)
     const sortedKeys = Object.keys(this.predefinedResponses).sort((a, b) => b.length - a.length);
     
     for (const key of sortedKeys) {
-      if (lowerMessage.includes(key)) {
+      if (key !== 'contact' && key !== 'email' && key !== 'github' && key !== 'linkedin' && 
+          lowerMessage.includes(key)) {
         return this.predefinedResponses[key];
       }
     }
 
-    // Intelligent matching for related queries
-    if (lowerMessage.includes('contact') || lowerMessage.includes('reach') || lowerMessage.includes('connect') || 
-        lowerMessage.includes('email') || lowerMessage.includes('github') || lowerMessage.includes('linkedin') ||
-        lowerMessage.includes('social') || lowerMessage.includes('phone')) {
-      return this.predefinedResponses['contact'];
-    }
-
+    // PRIORITY 4: Intelligent matching for related queries
     if (lowerMessage.includes('project') || lowerMessage.includes('build') || lowerMessage.includes('develop') || lowerMessage.includes('create')) {
       return this.predefinedResponses['projects'];
     }
