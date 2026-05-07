@@ -18,7 +18,9 @@ class PortfolioChatbot {
       'retrofit', 'room', 'mvvm', 'coroutines', 'xml', 'api', 'rest',
       'sqlite', 'authentication', 'database', 'ui', 'mobile', 'application',
       'hassan', 'khan', 'about', 'years', 'experience', 'production', 'offline',
-      'caching', 'architecture', 'ican', 'netsol', 'internship'
+      'caching', 'architecture', 'ican', 'netsol', 'internship', 'reach', 'connect',
+      'telephone', 'phone', 'social', 'media', 'profile', 'portfolio', 'resume',
+      'cv', 'hire', 'collaborate', 'work with', 'collaborate'
     ];
 
     this.predefinedResponses = {
@@ -48,6 +50,26 @@ Want to know more about any specific skill?`,
 
 Looking to hire or collaborate? Check his GitHub or LinkedIn!`,
       'contact': `You can reach Hassan through:
+📧 **Email**: hassankhan74812@gmail.com
+🐙 **GitHub**: https://github.com/HassanKhanO1
+💼 **LinkedIn**: https://www.linkedin.com/in/hassan-khan-964265260/`,
+      'email': `📧 Hassan's Email Address:
+**hassankhan74812@gmail.com**
+
+Feel free to reach out to him directly!`,
+      'github': `🐙 Hassan's GitHub Profile:
+**https://github.com/HassanKhanO1**
+
+Check out his repositories and projects there!`,
+      'linkedin': `💼 Hassan's LinkedIn Profile:
+**https://www.linkedin.com/in/hassan-khan-964265260/**
+
+Connect with him on LinkedIn!`,
+      'social media': `You can connect with Hassan on:
+🐙 **GitHub**: https://github.com/HassanKhanO1
+💼 **LinkedIn**: https://www.linkedin.com/in/hassan-khan-964265260/
+📧 **Email**: hassankhan74812@gmail.com`,
+      'reach': `You can reach Hassan through:
 📧 **Email**: hassankhan74812@gmail.com
 🐙 **GitHub**: https://github.com/HassanKhanO1
 💼 **LinkedIn**: https://www.linkedin.com/in/hassan-khan-964265260/`,
@@ -290,30 +312,40 @@ He implements Room in several of his projects for data storage!`
       return this.getNonRelevantResponse();
     }
 
-    // Check for exact or partial matches in predefined responses
-    for (const [key, response] of Object.entries(this.predefinedResponses)) {
+    // Check for exact or partial matches in predefined responses (longest match first for better accuracy)
+    const sortedKeys = Object.keys(this.predefinedResponses).sort((a, b) => b.length - a.length);
+    
+    for (const key of sortedKeys) {
       if (lowerMessage.includes(key)) {
-        return response;
+        return this.predefinedResponses[key];
       }
     }
 
     // Intelligent matching for related queries
-    if (lowerMessage.includes('project') || lowerMessage.includes('build') || lowerMessage.includes('develop')) {
-      return this.predefinedResponses['projects'];
-    }
-    if (lowerMessage.includes('skill') || lowerMessage.includes('expertise') || lowerMessage.includes('know')) {
-      return this.predefinedResponses['skills'];
-    }
-    if (lowerMessage.includes('work') || lowerMessage.includes('year') || lowerMessage.includes('worked')) {
-      return this.predefinedResponses['experience'];
-    }
-    if (lowerMessage.includes('contact') || lowerMessage.includes('reach') || lowerMessage.includes('connect') || lowerMessage.includes('email') || lowerMessage.includes('github') || lowerMessage.includes('linkedin')) {
+    if (lowerMessage.includes('contact') || lowerMessage.includes('reach') || lowerMessage.includes('connect') || 
+        lowerMessage.includes('email') || lowerMessage.includes('github') || lowerMessage.includes('linkedin') ||
+        lowerMessage.includes('social') || lowerMessage.includes('phone')) {
       return this.predefinedResponses['contact'];
     }
-    if (lowerMessage.includes('certificate') || lowerMessage.includes('qualification')) {
+
+    if (lowerMessage.includes('project') || lowerMessage.includes('build') || lowerMessage.includes('develop') || lowerMessage.includes('create')) {
+      return this.predefinedResponses['projects'];
+    }
+
+    if (lowerMessage.includes('skill') || lowerMessage.includes('expertise') || lowerMessage.includes('know') || lowerMessage.includes('language') || lowerMessage.includes('technology')) {
+      return this.predefinedResponses['skills'];
+    }
+
+    if (lowerMessage.includes('work') || lowerMessage.includes('year') || lowerMessage.includes('worked') || lowerMessage.includes('experience')) {
+      return this.predefinedResponses['experience'];
+    }
+
+    if (lowerMessage.includes('certificate') || lowerMessage.includes('qualification') || lowerMessage.includes('credential')) {
       return this.predefinedResponses['certificates'];
     }
-    if (lowerMessage.includes('who are you') || lowerMessage.includes('tell me about') || lowerMessage.includes('about you') || lowerMessage.includes('about hassan')) {
+
+    if (lowerMessage.includes('who are you') || lowerMessage.includes('tell me about') || lowerMessage.includes('about you') || 
+        lowerMessage.includes('about hassan') || lowerMessage.includes('introduce yourself')) {
       return this.predefinedResponses['about'];
     }
 
@@ -325,10 +357,10 @@ He implements Room in several of his projects for data storage!`
 - Inquire about programming languages (Kotlin, Java, React Native)
 - Learn about technologies (Jetpack Compose, Firebase, MVVM, REST APIs, etc.)
 - Ask about Hassan's experience and background
-- Get contact information
+- Get contact information (Email, GitHub, LinkedIn)
 - Learn about certificates
 
-Try asking: "Tell me about the Bank Signage App" or "What skills do you have?"`;
+Try asking: "What's Hassan's LinkedIn?" or "How can I contact Hassan?"`;
   }
 
   getNonRelevantResponse() {
@@ -339,10 +371,10 @@ Try asking: "Tell me about the Bank Signage App" or "What skills do you have?"`;
 - 📱 Projects (Bank Signage App, Weather App, Custom Launcher, etc.)
 - 💻 Skills & Technologies (Kotlin, Firebase, Jetpack Compose, etc.)
 - 👨‍💼 Work Experience & Background
-- 📧 Contact Information
+- 📧 Contact Information (Email, GitHub, LinkedIn)
 - 🎓 Certificates & Qualifications
 
-Try asking: "What projects has Hassan worked on?" or "Tell me about his skills"`,
+Try asking: "What projects has Hassan worked on?" or "What's his LinkedIn?"`,
 
       `I'm an AI Assistant for Hassan Khan's portfolio! I'm not able to answer general questions, but I'd love to tell you about:
 - **Hassan's Android Projects** 🚀
@@ -351,13 +383,13 @@ Try asking: "What projects has Hassan worked on?" or "Tell me about his skills"`
 - **How to Contact Him** 📞
 - **His Achievements** 🏆
 
-Ask me something like: "What is Hassan's experience?" or "Show me his projects"`,
+Ask me something like: "What is Hassan's experience?" or "Show me his contact information"`,
 
       `I'm a Portfolio AI Assistant - I can help you learn about Hassan Khan! My expertise is in his:
 ✅ Android Development Projects
 ✅ Programming Skills & Technologies
 ✅ Professional Experience
-✅ Contact Information
+✅ Contact Information (Email, GitHub, LinkedIn)
 ✅ Certifications
 
 Feel free to ask about his work or background!`
