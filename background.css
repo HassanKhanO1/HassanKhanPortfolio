@@ -1,0 +1,79 @@
+/*
+Attractive animated background with blurred morphing SVG shapes and glowing gradient spots.
+- Glassmorphic SVG blobs for softness
+- Animated gradient with glowing effect
+- Works on any dark layout
+- Overlayed, content sits above
+*/
+
+body {
+  position: relative;
+  background: #060612;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.bg-animated {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  pointer-events: none; z-index: 0;
+  overflow: hidden;
+}
+
+/* Morphing SVG blob */
+.bg-blob {
+  position: absolute;
+  filter: blur(28px) brightness(1.2);
+  opacity: 0.52;
+  animation: blob-move 14s ease-in-out infinite alternate;
+}
+.bg-blob-1 {
+  left: -8vw; top: 0vh; width: 49vw; height: 49vw; background: #4f46e5; }
+.bg-blob-2 {
+  right: -7vw; top: 17vh; width: 38vw; height: 38vw; background: #0891b2; opacity: .45 }
+.bg-blob-3 {
+  left: 37vw; bottom: -8vw; width: 43vw; height: 43vw; background: #f59e42; opacity: .47; }
+
+@keyframes blob-move {
+  0%   { transform: scale(1)   translate(0px, 0px); }
+  33%  { transform: scale(1.13,0.90) translate(25px, -20px); }
+  65%  { transform: scale(0.87,1.1) translate(-45px, 40px); }
+  100% { transform: scale(1.12,0.87) translate(30px, 10px); }
+}
+
+/* Optional animated gradient spotlights */
+.bg-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(48px) opacity(0.72);
+  mix-blend-mode: lighten;
+}
+.bg-glow-1 {
+  left: 20vw; top: 12vh; width: 19vw; height: 19vw;
+  background: radial-gradient(circle, #6366f1 0%, #38bdf8 75%, #0ea5e9 100%);
+  animation: glow-move-1 12s linear infinite alternate;
+}
+.bg-glow-2 {
+  right: 16vw; bottom: 15vh; width: 16vw; height: 16vw;
+  background: radial-gradient(circle, #f59e42 0%, #fbbf24 60%, #f59e42 100%);
+  animation: glow-move-2 13s linear infinite alternate;
+}
+
+@keyframes glow-move-1 {
+  0%   { transform: scale(1)   translate(0,0); }
+  33%  { transform: scale(1.15,0.95) translate(22px,12px); }
+  60%  { transform: scale(0.87,1.14) translate(-20px,18px); }
+  100% { transform: scale(1.08,1.08) translate(-16px,-8px); }
+}
+@keyframes glow-move-2 {
+  0%   { transform: scale(1)   translate(0,0); }
+  33%  { transform: scale(1.12,0.88) translate(-24px,14px); }
+  60%  { transform: scale(0.93,1.09) translate(18px,-12px); }
+  100% { transform: scale(1.09,1.03) translate(10px,12px); }
+}
+
+/* Ensure content in front */
+main, header, nav, section, .container, .chatbot-widget {
+  position: relative;
+  z-index: 1;
+}
