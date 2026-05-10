@@ -5,92 +5,302 @@
 class PortfolioChatbot {
   constructor() {
     this.conversationHistory = [];
-    // ...other properties...
-    this.lastState = 'closed'; // 'open' or 'closed'
-    // ... everything else from your current constructor ...
-    this.portfolioData = { /* ... same as in your previous file ... */ };
+
+    /* =========================
+       PORTFOLIO KNOWLEDGE BASE
+    ========================= */
+
+    this.portfolioData = {
+      name: "Hassan Khan",
+
+      skills: [
+        "Kotlin",
+        "Android Development",
+        "Jetpack Compose",
+        "React Native",
+        "Firebase",
+        "Retrofit",
+        "REST APIs",
+        "SQLite",
+        "Room Database",
+        "Java",
+        "C++",
+        "Python",
+        "Git",
+        "GitHub"
+      ],
+
+      experience: [
+        {
+          company: "CyberSoft Solution",
+          role: "Junior Android Developer",
+          duration: "08/2024 - Present",
+          responsibilities: [
+            "Developed dynamic Android applications",
+            "Worked with REST APIs",
+            "Implemented internet connectivity monitoring",
+            "Created custom Android launcher app",
+            "Worked on banking digital signage application",
+            "Implemented scheduled rendering and deletion logic"
+          ]
+        },
+
+        {
+          company: "Netsol Technologies",
+          role: "Android Development Intern",
+          duration: "06/2024 - 08/2024",
+          responsibilities: [
+            "Developed Android applications using Kotlin",
+            "Integrated REST APIs and local storage",
+            "Collaborated with mentors and team members",
+            "Worked on application testing and debugging"
+          ]
+        }
+      ],
+
+      projects: [
+        "Banking Digital Signage Application",
+        "Andaaz-e-Khas E-commerce Website",
+        "Student Data App",
+        "Calculator App",
+        "Camera Application",
+        "Weather Forecasting Project",
+        "Library Management System",
+        "Word Search Game",
+        "Notepad Application",
+        "Number Search Game"
+      ]
+    };
+
+    /* =========================
+       ALLOWED KEYWORDS
+    ========================= */
+
     this.allowedKeywords = [
-      "hassan","portfolio","experience","employment","work","job","android","kotlin","jetpack","compose","firebase","retrofit","react native","sqlite","room","api","project","skills","developer","internship","cybersoft","netsol","java","c++","python","github","signage","ecommerce","app"
+      "hassan",
+      "portfolio",
+      "experience",
+      "employment",
+      "work",
+      "job",
+      "android",
+      "kotlin",
+      "jetpack",
+      "compose",
+      "firebase",
+      "retrofit",
+      "react native",
+      "sqlite",
+      "room",
+      "api",
+      "project",
+      "skills",
+      "developer",
+      "internship",
+      "cybersoft",
+      "netsol",
+      "java",
+      "c++",
+      "python",
+      "github",
+      "signage",
+      "ecommerce",
+      "app"
     ];
   }
 
-  isRelevantQuestion(question) { /* ...same as before... */
+  /* =========================
+     CHECK QUESTION RELEVANCY
+  ========================= */
+
+  isRelevantQuestion(question) {
     const lowerQuestion = question.toLowerCase();
-    return this.allowedKeywords.some(keyword => lowerQuestion.includes(keyword));
+
+    return this.allowedKeywords.some(keyword =>
+      lowerQuestion.includes(keyword)
+    );
   }
-  generatePortfolioResponse(question) { /* ...as in your previous file... */
+
+  /* =========================
+     GENERATE PORTFOLIO RESPONSE
+  ========================= */
+
+  generatePortfolioResponse(question) {
     const q = question.toLowerCase();
-    if (q.includes("experience") || q.includes("employment") || q.includes("work") || q.includes("job")) {
-      return `\nHassan Khan is currently working as a Junior Android Developer at CyberSoft Solution since August 2024.\n\nResponsibilities include:\n• Android app development using Kotlin\n• REST API integration\n• Banking digital signage application development\n• Internet connectivity monitoring\n• Custom Android launcher development\n• Scheduled rendering functionality\n\nHe also completed an Android Development internship at Netsol Technologies from June 2024 to August 2024.\n      `;
+
+    /* ===== EXPERIENCE ===== */
+
+    if (
+      q.includes("experience") ||
+      q.includes("employment") ||
+      q.includes("work") ||
+      q.includes("job")
+    ) {
+      return `
+Hassan Khan is currently working as a Junior Android Developer at CyberSoft Solution since August 2024.
+
+Responsibilities include:
+• Android app development using Kotlin
+• REST API integration
+• Banking digital signage application development
+• Internet connectivity monitoring
+• Custom Android launcher development
+• Scheduled rendering functionality
+
+He also completed an Android Development internship at Netsol Technologies from June 2024 to August 2024.
+      `;
     }
-    if (q.includes("skills") || q.includes("technology") || q.includes("tech stack")) {
-      return `\nHassan Khan's technical skills include:\n\n• Kotlin\n• Android Development\n• Jetpack Compose\n• Firebase\n• Retrofit\n• REST APIs\n• SQLite\n• Room Database\n• React Native\n• Java\n• C++\n• Python\n• Git & GitHub\n      `;
+
+    /* ===== SKILLS ===== */
+
+    if (
+      q.includes("skills") ||
+      q.includes("technology") ||
+      q.includes("tech stack")
+    ) {
+      return `
+Hassan Khan's technical skills include:
+
+• Kotlin
+• Android Development
+• Jetpack Compose
+• Firebase
+• Retrofit
+• REST APIs
+• SQLite
+• Room Database
+• React Native
+• Java
+• C++
+• Python
+• Git & GitHub
+      `;
     }
-    if (q.includes("project") || q.includes("application") || q.includes("app")) {
-      return `\nHassan Khan has developed multiple projects including:\n\n• Banking Digital Signage Application\n• Andaaz-e-Khas E-commerce Website\n• Student Data App\n• Calculator App\n• Camera Application\n• Word Search Game\n• Weather Forecasting Project\n• Library Management System\n• Notepad Application\n• Number Search Game\n      `;
+
+    /* ===== PROJECTS ===== */
+
+    if (
+      q.includes("project") ||
+      q.includes("application") ||
+      q.includes("app")
+    ) {
+      return `
+Hassan Khan has developed multiple projects including:
+
+• Banking Digital Signage Application
+• Andaaz-e-Khas E-commerce Website
+• Student Data App
+• Calculator App
+• Camera Application
+• Word Search Game
+• Weather Forecasting Project
+• Library Management System
+• Notepad Application
+• Number Search Game
+      `;
     }
+
+    /* ===== KOTLIN ===== */
+
     if (q.includes("kotlin")) {
-      return `\nHassan Khan has strong experience in Kotlin development for Android applications.\n\nHe has worked on:\n• Android applications using Kotlin\n• REST API integration\n• Firebase integration\n• Jetpack Compose UI\n• SQLite and Room Database\n• Dynamic UI development\n      `;
+      return `
+Hassan Khan has strong experience in Kotlin development for Android applications.
+
+He has worked on:
+• Android applications using Kotlin
+• REST API integration
+• Firebase integration
+• Jetpack Compose UI
+• SQLite and Room Database
+• Dynamic UI development
+      `;
     }
-    if (q.includes("jetpack") || q.includes("compose")) {
-      return `\nHassan Khan has experience with Jetpack Compose for building modern Android user interfaces.\n\nHe has worked on:\n• Dynamic UI rendering\n• State management\n• Responsive layouts\n• Compose-based Android screens\n      `;
+
+    /* ===== JETPACK COMPOSE ===== */
+
+    if (
+      q.includes("jetpack") ||
+      q.includes("compose")
+    ) {
+      return `
+Hassan Khan has experience with Jetpack Compose for building modern Android user interfaces.
+
+He has worked on:
+• Dynamic UI rendering
+• State management
+• Responsive layouts
+• Compose-based Android screens
+      `;
     }
-    return `\nHassan Khan is a Computer Science graduate and Android Developer with experience in Kotlin, Jetpack Compose, Firebase, REST APIs, and React Native.\n\nYou can ask about:\n• Skills\n• Work experience\n• Android development\n• Kotlin\n• Projects\n• Firebase\n• Jetpack Compose\n• React Native\n    `;
+
+    /* ===== DEFAULT PORTFOLIO RESPONSE ===== */
+
+    return `
+Hassan Khan is a Computer Science graduate and Android Developer with experience in Kotlin, Jetpack Compose, Firebase, REST APIs, and React Native.
+
+You can ask about:
+• Skills
+• Work experience
+• Android development
+• Kotlin
+• Projects
+• Firebase
+• Jetpack Compose
+• React Native
+    `;
   }
+
+  /* =========================
+     HANDLE USER MESSAGE
+  ========================= */
+
   async handleMessage(userMessage) {
     const isRelevant = this.isRelevantQuestion(userMessage);
+
+    /* ===== REJECT IRRELEVANT QUESTIONS ===== */
+
     if (!isRelevant) {
-      return `\nI am an AI Assistant for Hassan Khan's portfolio.\n\nPlease ask questions related to:\n• Skills\n• Work experience\n• Android Development\n• Kotlin\n• Jetpack Compose\n• Firebase\n• React Native\n• Projects\n\nSuggested Questions:\n• What technologies does Hassan Khan use?\n• Tell me about Hassan Khan's experience.\n• What projects has Hassan Khan developed?\n• What are Hassan Khan's Android skills?\n      `;
+      return `
+I am an AI Assistant for Hassan Khan's portfolio.
+
+Please ask questions related to:
+• Skills
+• Work experience
+• Android Development
+• Kotlin
+• Jetpack Compose
+• Firebase
+• React Native
+• Projects
+
+Suggested Questions:
+• What technologies does Hassan Khan use?
+• Tell me about Hassan Khan's experience.
+• What projects has Hassan Khan developed?
+• What are Hassan Khan's Android skills?
+      `;
     }
+
+    /* ===== GENERATE RELEVANT RESPONSE ===== */
+
     return this.generatePortfolioResponse(userMessage);
   }
-
-  // === SAFEGUARD for visibility: at least chat toggle or chat window is always visible
-
-  showChatWidget() {
-    const widget = document.getElementById('chatbot-widget');
-    const btn = document.getElementById('chatbot-toggle');
-    if (widget && btn) {
-      widget.classList.add('active');
-      btn.classList.add('hidden');
-      this.lastState = 'open';
-    }
-  }
-  hideChatWidget() {
-    const widget = document.getElementById('chatbot-widget');
-    const btn = document.getElementById('chatbot-toggle');
-    if (widget && btn) {
-      widget.classList.remove('active');
-      btn.classList.remove('hidden');
-      this.lastState = 'closed';
-    }
-  }
-
-  toggleChat() {
-    // Always keeps at least one visible (never both hidden)
-    if (this.lastState === 'closed') {
-      this.showChatWidget();
-      setTimeout(() => {
-        const input = document.getElementById('chatbot-input');
-        if(input) input.focus();
-      }, 300);
-    } else {
-      this.hideChatWidget();
-    }
-  }
-
-  // ...other existing chatbot UI, event binding, etc. can call toggleChat() ...
 }
 
-const chatbot = new PortfolioChatbot();
-// Example for connecting the toggle:
-document.addEventListener('DOMContentLoaded', () => {
-  // Button with id 'chatbot-toggle' toggles chat:
-  const btn = document.getElementById('chatbot-toggle');
-  if(btn) btn.onclick = () => chatbot.toggleChat();
-  // Close button in widget with id 'chatbot-close':
-  const close = document.getElementById('chatbot-close');
-  if(close) close.onclick = () => chatbot.toggleChat();
+/* =========================
+   INITIALIZE CHATBOT
+========================= */
 
-  // Your prompt/input send logic here...
-});
+const chatbot = new PortfolioChatbot();
+
+/* =========================
+   EXAMPLE USAGE
+========================= */
+
+async function askQuestion() {
+  const input = document.getElementById("userInput").value;
+
+  const response = await chatbot.handleMessage(input);
+
+  document.getElementById("chatResponse").innerHTML = response;
+}
