@@ -27,7 +27,7 @@ document.body.insertAdjacentHTML('beforeend', `
       <div class="chatbot-message bot">
         <div class="message-content bot">
           👋 Hi! I'm Hassan's AI Assistant.<br><br>
-          Ask me about his <strong>skills</strong>, <strong>experience</strong>, or <strong>projects</strong>!
+          Ask me about his <strong>skills</strong>, <strong>experience</strong>, <strong>Machine Learning journey</strong>, or <strong>projects</strong>!
         </div>
       </div>
     </div>
@@ -36,7 +36,7 @@ document.body.insertAdjacentHTML('beforeend', `
         class="chatbot-input"
         id="chatbotInput"
         type="text"
-        placeholder="Ask about Hassan's skills, projects..."
+        placeholder="Ask about Hassan's skills, projects, or ML experience..."
         autocomplete="off"
       />
       <button class="chatbot-send" id="chatbotSend">➤</button>
@@ -53,12 +53,29 @@ class PortfolioChatbot {
 
     this.portfolioData = {
       name: "Hassan Khan",
-      skills: [
+      background: "BSCS degree holder with Android development experience and developing practical expertise in Machine Learning and AI/ML engineering.",
+      androidSkills: [
         "Kotlin", "Android Development", "Jetpack Compose", "React Native",
         "Firebase", "Retrofit", "REST APIs", "SQLite", "Room Database",
         "Java", "C++", "Python", "Git", "GitHub"
       ],
-      experience: [
+      mlSkills: [
+        "Supervised Learning", "Unsupervised Learning", "Linear Regression",
+        "Logistic Regression", "Cost/Loss Functions", "Gradient Descent",
+        "Classification", "Clustering", "Feature Engineering", "Feature Scaling",
+        "Data Preprocessing", "Model Evaluation", "Neural Networks",
+        "Neurons", "Weights and Biases", "Activation Functions",
+        "Forward Propagation", "Backpropagation", "Tensors", "TensorFlow",
+        "NLP Fundamentals", "LLM Concepts", "Embeddings", "Semantic Search",
+        "Vector Databases", "Retrieval-Augmented Generation (RAG)", "Python",
+        "NumPy", "Pandas", "Scikit-learn"
+      ],
+      mlLearningDirection: "Progressing from classical Machine Learning toward Deep Learning, NLP, LLMs, RAG, Semantic Search, Vector Databases, and AI Agents.",
+      mlCertificates: [
+        "Machine Learning",
+        "Advanced Learning Algorithms"
+      ],
+      androidExperience: [
         {
           company: "CyberSoft Solution",
           role: "Junior Android Developer",
@@ -99,7 +116,12 @@ class PortfolioChatbot {
       "react native", "sqlite", "room", "api", "project", "skills",
       "developer", "internship", "cybersoft", "netsol", "java", "c++",
       "python", "github", "signage", "ecommerce", "app", "who", "about",
-      "tell", "what", "technology", "tech", "stack", "certificate", "contact"
+      "tell", "what", "technology", "tech", "stack", "certificate", "contact",
+      "machine learning", "ml", "artificial intelligence", "ai", "neural", 
+      "network", "tensorflow", "scikit", "pandas", "numpy", "deep learning",
+      "supervised", "unsupervised", "regression", "classification", "clustering",
+      "nlp", "llm", "rag", "semantic", "embedding", "vector", "database",
+      "learning", "algorithm", "model", "training", "feature", "engineering"
     ];
   }
 
@@ -110,6 +132,93 @@ class PortfolioChatbot {
 
   generatePortfolioResponse(question) {
     const q = question.toLowerCase();
+
+    // Machine Learning Experience
+    if (q.includes("machine learning") || (q.includes("ml") && !q.includes("html"))) {
+      return `<strong>Hassan's Machine Learning Experience</strong><br><br>
+🤖 Hassan is <strong>developing practical expertise in Machine Learning and AI/ML engineering</strong> through hands-on projects and structured learning.<br><br>
+<strong>ML Skills & Knowledge:</strong><br>
+• Supervised & Unsupervised Learning<br>
+• Linear & Logistic Regression<br>
+• Cost Functions & Gradient Descent<br>
+• Classification & Clustering<br>
+• Neural Networks (neurons, weights, biases, activation functions)<br>
+• Forward & Backpropagation<br>
+• TensorFlow & Tensors<br>
+• NLP & LLM Concepts<br>
+• Embeddings & Semantic Search<br>
+• Vector Databases & RAG<br>
+• Feature Engineering & Data Preprocessing<br>
+• Model Evaluation<br><br>
+<strong>ML Certificates:</strong> Machine Learning, Advanced Learning Algorithms<br><br>
+<strong>Current Direction:</strong> Progressing toward Deep Learning, NLP, LLMs, RAG, Semantic Search, Vector Databases, and AI Agents.`;
+    }
+
+    if (q.includes("ai") || q.includes("artificial intelligence")) {
+      return `<strong>Hassan's AI/ML Journey</strong><br><br>
+Hassan is <strong>currently transitioning toward AI/ML Engineering</strong> while leveraging his Android development background.<br><br>
+<strong>What he's learning:</strong><br>
+• Deep Learning & Neural Networks<br>
+• Large Language Models (LLMs)<br>
+• Natural Language Processing (NLP)<br>
+• Retrieval-Augmented Generation (RAG)<br>
+• Semantic Search & Vector Databases<br><br>
+<strong>Combined Expertise:</strong> He's building <strong>AI-powered applications</strong> using Python, REST APIs, Android, React Native, and Firebase to create practical, deployable solutions.`;
+    }
+
+    if (q.includes("neural") || q.includes("network")) {
+      return `<strong>Neural Networks & Deep Learning</strong><br><br>
+Hassan has hands-on understanding of:<br>
+• Neurons, weights, and biases<br>
+• Activation functions<br>
+• Forward Propagation<br>
+• Backpropagation fundamentals<br>
+• Tensors and TensorFlow<br>
+• Building and training neural network models<br><br>
+He's currently applying these concepts through end-to-end ML projects focusing on real-world prediction, classification, NLP, and deep-learning applications.`;
+    }
+
+    if (q.includes("tensorflow") || q.includes("tensor")) {
+      return `<strong>TensorFlow & Tensors</strong><br><br>
+Hassan has practical experience with:<br>
+• TensorFlow framework<br>
+• Working with tensors<br>
+• Building neural network models<br>
+• Model training and optimization<br><br>
+He's built a foundation for developing and training neural-network models with TensorFlow as part of his ML learning journey.`;
+    }
+
+    if (q.includes("nlp") || q.includes("natural language")) {
+      return `<strong>Natural Language Processing (NLP)</strong><br><br>
+Hassan is <strong>expanding expertise toward NLP</strong>, including:<br>
+• NLP fundamentals<br>
+• Large Language Model (LLM) concepts<br>
+• Embeddings<br>
+• Semantic Search<br>
+• Vector Databases for semantic similarity<br>
+• Retrieval-Augmented Generation (RAG)<br><br>
+He's building practical NLP projects to apply these concepts to real-world problems.`;
+    }
+
+    if (q.includes("llm") || q.includes("large language")) {
+      return `<strong>Large Language Models (LLMs) & RAG</strong><br><br>
+Hassan is developing knowledge in:<br>
+• Large Language Model concepts<br>
+• Embeddings and semantic representations<br>
+• Vector Databases for efficient retrieval<br>
+• Retrieval-Augmented Generation (RAG) systems<br>
+• Semantic Search techniques<br><br>
+He's exploring how to combine LLMs with custom data sources using RAG for building intelligent, context-aware applications.`;
+    }
+
+    if (q.includes("certificate") || q.includes("cert")) {
+      return `<strong>Certificates</strong><br><br>
+🏅 <strong>Machine Learning</strong> — Hands-on ML fundamentals and practical implementation<br>
+🏅 <strong>Advanced Learning Algorithms</strong> — Neural Networks and Deep Learning<br>
+🏅 ICAN Certificate<br>
+🏅 Netsol Internship Certificate<br><br>
+Hassan continues learning and expanding his AI/ML expertise through structured courses and hands-on projects.`;
+    }
 
     if (q.includes("experience") || q.includes("employment") || q.includes("work") || q.includes("job")) {
       return `<strong>Hassan Khan's Work Experience</strong><br><br>
@@ -135,8 +244,9 @@ class PortfolioChatbot {
       return `<strong>Hassan Khan's Technical Skills</strong><br><br>
 📱 <strong>Android:</strong> Kotlin, Jetpack Compose, XML, MVVM<br>
 🔗 <strong>Backend & Data:</strong> Retrofit, Firebase, REST APIs, Room, SQLite<br>
-💻 <strong>Other Languages:</strong> Java, C++, Python, React Native<br>
-🛠️ <strong>Tools:</strong> Git, GitHub, Android Studio, VS Code`;
+💻 <strong>Languages:</strong> Java, C++, Python, React Native<br>
+🤖 <strong>Machine Learning:</strong> Supervised/Unsupervised Learning, Neural Networks, TensorFlow, Scikit-learn, Feature Engineering, NLP, LLMs<br>
+🛠️ <strong>Tools:</strong> Git, GitHub, Android Studio, VS Code, Jupyter`;
     }
 
     if (q.includes("project") || q.includes("application") || q.includes("app")) {
@@ -181,16 +291,10 @@ Hassan uses Jetpack Compose to build modern Android UIs:<br><ul>
 🐙 <strong>GitHub:</strong> <a href="https://github.com/HassanKhanO1" target="_blank" style="color:#60a5fa;">github.com/HassanKhanO1</a>`;
     }
 
-    if (q.includes("certificate") || q.includes("cert")) {
-      return `<strong>Certificates</strong><br><br>
-🏅 ICAN Certificate<br>
-🏅 Netsol Internship Certificate`;
-    }
-
     if (q.includes("who") || q.includes("about") || q.includes("tell")) {
       return `<strong>About Hassan Khan</strong><br><br>
-Hassan is an Android Developer with 1.5+ years of experience building high-quality Android applications.<br><br>
-He specialises in <strong>Kotlin</strong>, <strong>Jetpack Compose</strong>, <strong>MVVM architecture</strong>, REST API integration, and offline caching with Room/SQLite.<br><br>
+Hassan is an Android Developer with 1.5+ years of experience building high-quality Android applications. He specializes in <strong>Kotlin</strong>, <strong>Jetpack Compose</strong>, <strong>MVVM architecture</strong>, REST API integration, and offline caching.<br><br>
+<strong>Growing Focus:</strong> He's also <strong>developing practical expertise in Machine Learning and AI/ML engineering</strong> through hands-on projects, currently exploring Neural Networks, Deep Learning, NLP, and LLMs.<br><br>
 Currently working at <strong>CyberSoft Solution</strong> as a Junior Android Developer.`;
     }
 
@@ -199,6 +303,7 @@ Try asking about:<br>
 • <strong>Skills</strong> — What technologies does he use?<br>
 • <strong>Experience</strong> — Where has he worked?<br>
 • <strong>Projects</strong> — What apps has he built?<br>
+• <strong>Machine Learning</strong> — What's his ML expertise?<br>
 • <strong>Contact</strong> — How to reach him?`;
   }
 
@@ -209,7 +314,8 @@ Try asking about:<br>
 Try asking:<br>
 • What are Hassan's skills?<br>
 • Tell me about his experience<br>
-• What projects has he built?`;
+��� What projects has he built?<br>
+• Does he have Machine Learning experience?`;
     }
     return this.generatePortfolioResponse(userMessage);
   }
