@@ -255,6 +255,95 @@
     }
 
     /* =====================
+       AI/ML EXPERIENCE SECTION
+    ====================== */
+    .aiml-intro {
+      max-width: 800px;
+      margin-bottom: 40px;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .aiml-intro p {
+      margin-bottom: 20px;
+    }
+
+    .aiml-capabilities {
+      max-width: 900px;
+      margin-bottom: 40px;
+    }
+
+    .aiml-capabilities h3 {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      color: var(--text);
+    }
+
+    .aiml-capabilities ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .aiml-capabilities li {
+      margin-bottom: 12px;
+      color: var(--secondary);
+      padding-left: 24px;
+      position: relative;
+    }
+
+    .aiml-capabilities li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    .aiml-learning-direction {
+      max-width: 800px;
+      margin-top: 30px;
+    }
+
+    .aiml-learning-direction h3 {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      color: var(--text);
+    }
+
+    .aiml-learning-direction p {
+      margin-bottom: 15px;
+      line-height: 1.8;
+    }
+
+    /* =====================
+       TECH BADGES
+    ====================== */
+    .tech-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--card-bg);
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .badge:hover {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    /* =====================
        EXPERIENCE & CERTS
     ====================== */
     .list {
@@ -298,6 +387,34 @@
       nav ul {
         gap: 12px;
       }
+
+      .tech-badges {
+        gap: 10px;
+      }
+
+      .badge {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      section {
+        padding: 60px 15px;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+      }
+
+      nav ul {
+        gap: 8px;
+        font-size: 0.85rem;
+      }
+
+      .aiml-capabilities li {
+        padding-left: 20px;
+      }
     }
   </style>
 
@@ -316,6 +433,7 @@
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#aiml">AI/ML</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -428,6 +546,65 @@
           </p>
           <span>Tech: Shopify</span>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================
+       AI/ML EXPERIENCE
+  ====================== -->
+  <section id="aiml">
+    <div class="container">
+      <h2>AI/ML Experience</h2>
+
+      <!-- Introduction -->
+      <div class="aiml-intro">
+        <p>
+          Developing practical expertise in Machine Learning, Neural Networks, and AI/ML engineering through hands-on projects and structured learning based on Andrew Ng's Machine Learning curriculum.
+        </p>
+      </div>
+
+      <!-- Core ML Capabilities -->
+      <div class="aiml-capabilities">
+        <h3>Core ML Capabilities</h3>
+        <ul>
+          <li>Built a strong foundation in Supervised and Unsupervised Learning, including regression, classification, clustering, and model evaluation.</li>
+          <li>Implemented and studied Linear Regression, Logistic Regression, Cost Functions, and Gradient Descent to understand the fundamentals of model training and optimization.</li>
+          <li>Developed an understanding of Neural Networks, including neurons, weights, biases, activation functions, forward propagation, and backpropagation.</li>
+          <li>Worked with TensorFlow and tensors, building a foundation for developing and training neural-network models.</li>
+          <li>Gained practical knowledge of feature engineering, feature scaling, data preprocessing, and model evaluation.</li>
+          <li>Currently applying these concepts through end-to-end ML projects, focusing on real-world prediction, classification, NLP, and deep-learning applications.</li>
+          <li>Expanding expertise toward Natural Language Processing (NLP), Large Language Models (LLMs), embeddings, semantic search, vector databases, and Retrieval-Augmented Generation (RAG).</li>
+          <li>Combining ML knowledge with existing software-development experience in Python, REST APIs, Android, React Native, and Firebase to build deployable AI-powered applications.</li>
+        </ul>
+      </div>
+
+      <!-- Technologies / Skills -->
+      <div>
+        <h3 style="font-size: 1.2rem; margin-bottom: 15px; color: var(--text);">Technologies & Skills</h3>
+        <div class="tech-badges">
+          <span class="badge">Python</span>
+          <span class="badge">NumPy</span>
+          <span class="badge">Pandas</span>
+          <span class="badge">Scikit-learn</span>
+          <span class="badge">TensorFlow</span>
+          <span class="badge">Machine Learning</span>
+          <span class="badge">Neural Networks</span>
+          <span class="badge">NLP</span>
+          <span class="badge">LLMs</span>
+          <span class="badge">RAG</span>
+          <span class="badge">Semantic Search</span>
+          <span class="badge">Vector Databases</span>
+          <span class="badge">REST APIs</span>
+        </div>
+      </div>
+
+      <!-- Current Learning Direction -->
+      <div class="aiml-learning-direction">
+        <h3>Current Learning Direction</h3>
+        <p>
+          Focused on practical application of machine learning and AI concepts through end-to-end projects. Currently exploring advanced topics in Natural Language Processing, Large Language Models, and Retrieval-Augmented Generation to build AI-powered applications that solve real-world problems.
+        </p>
       </div>
     </div>
   </section>
